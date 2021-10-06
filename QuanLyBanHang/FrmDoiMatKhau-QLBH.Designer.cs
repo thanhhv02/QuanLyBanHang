@@ -153,6 +153,7 @@ namespace QuanLyBanHang
             this.Controls.Add(this.label5);
             this.Name = "FrmDoiMatKhau_QLBH";
             this.Text = "FrmDoiMatKhau_QLBH";
+            this.Load += new System.EventHandler(this.FrmDoiMatKhau_QLBH_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -211,6 +211,7 @@ namespace QuanLyBanHang
             this.buttonAdd.TabIndex = 7;
             this.buttonAdd.Text = "Thêm";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonDelete
             // 

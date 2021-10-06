@@ -92,6 +92,7 @@ namespace QuanLyBanHang
             this.checkBoxSaveAcc.TabIndex = 2;
             this.checkBoxSaveAcc.Text = "Ghi nhớ tài khoản";
             this.checkBoxSaveAcc.UseVisualStyleBackColor = true;
+            this.checkBoxSaveAcc.CheckedChanged += new System.EventHandler(this.checkBoxSaveAcc_CheckedChanged);
             // 
             // labelForgotPW
             // 
@@ -141,6 +142,8 @@ namespace QuanLyBanHang
             this.Controls.Add(this.label5);
             this.Name = "FrmDangNhap_QLBH";
             this.Text = "FrmDangNhap_QLBH";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDangNhap_QLBH_FormClosed);
+            this.Load += new System.EventHandler(this.FrmDangNhap_QLBH_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

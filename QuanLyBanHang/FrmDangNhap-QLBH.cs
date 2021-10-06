@@ -12,12 +12,16 @@ using BUS_QLBanHang;
 using System.Net.Mail;
 using System.Net;
 using System.Security.Cryptography;
+ 
 
 namespace QuanLyBanHang
 {
     public partial class FrmDangNhap_QLBH : Form
     {
+        public string vaiTro { get; set; }
+        public string matKhau { get; set; }
         BUS_NhanVien busNhanVien = new BUS_NhanVien();
+        FrmMain fm;
         public FrmDangNhap_QLBH()
         {
             InitializeComponent();
@@ -34,41 +38,39 @@ namespace QuanLyBanHang
             DTO_NhanVien nv = new DTO_NhanVien();
             nv.EmailNV = textBoxEmail.Text;
             nv.MatKhau = busNhanVien.encryption(textBoxPW.Text);
-            if (checkAcc())
+
+            if (busNhanVien.NhanVienDangNhap(nv))
             {
-                try
-                {
-                    if (busNhanVien.NhanVienDangNhap(nv))
-                    {
-                        MessageBox.Show("Đăng nhập thành công");
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Đăng nhập không thành công, kiểm tra lại email hoặc mật khẩu");
-                        textBoxEmail.Text = null;
-                        textBoxPW.Text = null;
-                        textBoxEmail.Focus();
-                    }
-                }catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                
+                //login = true;
+                FrmMain.mail = nv.EmailNV;
+                DataTable dt = busNhanVien.VaiTroNhanVien(nv.EmailNV);
+                vaiTro = dt.Rows[0][0].ToString();//lay vai tro cua nhan vien
+
+                MessageBox.Show("Đăng nhập thành công");
+                FrmMain.session = 1;
+                this.Close();
             }
-            
+            else
+            {
+                MessageBox.Show("Đăng nhập không thành công, kiểm tra lại email hoặc mật khẩu");
+                textBoxPW.Text = null;
+                textBoxEmail.Focus();
+            }
+
+
+
         }
         
         bool checkAcc()
         {
-            if (String.IsNullOrEmpty(textBoxEmail.Text))
+            if (String.IsNullOrEmpty(textBoxEmail.Text) == true)
             {
                 MessageBox.Show("Chưa nhập email");
                 textBoxEmail.Text = null;
                 textBoxEmail.Focus();
                 return true;
             }
-            if (String.IsNullOrEmpty(textBoxPW.Text))
+            if (String.IsNullOrEmpty(textBoxPW.Text) == true)
             {
                 MessageBox.Show("Chưa nhập mật khẩu");
                 textBoxPW.Text = null;
@@ -160,6 +162,21 @@ namespace QuanLyBanHang
                 MessageBox.Show("Bạn cần nhập Email");
                 textBoxEmail.Focus();
             }
+        }
+
+        private void FrmDangNhap_QLBH_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void FrmDangNhap_QLBH_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
+
+        private void checkBoxSaveAcc_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

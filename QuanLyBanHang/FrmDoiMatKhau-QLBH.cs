@@ -16,5 +16,10 @@ namespace QuanLyBanHang
         {
             InitializeComponent();
         }
+
+        private void FrmDoiMatKhau_QLBH_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

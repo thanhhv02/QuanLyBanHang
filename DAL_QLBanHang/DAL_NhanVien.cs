@@ -14,7 +14,7 @@ namespace DAL_QLBanHang
     {
         
         
-        public static bool NhanVienDangNhap(DTO_NhanVien nv)
+        public bool NhanVienDangNhap(DTO_NhanVien nv)
         {
             
             try
@@ -26,20 +26,40 @@ namespace DAL_QLBanHang
                 cmd.CommandText = "sp_DangNhap";
                 cmd.Parameters.AddWithValue("email", nv.EmailNV);
                 cmd.Parameters.AddWithValue("matKhau", nv.MatKhau);
-                if (Convert.ToInt16(cmd.ExecuteScalar()) > 0)
+                if (Convert.ToInt64(cmd.ExecuteScalar()) > 0)
                     return true;
             }
-            catch (Exception ex)
-            {
-
-            }
+            
             finally
             {
                 _conn.Close();
             }
             return false;
         }
-        public static  bool NhanVienQuenMatKhau(string email)
+        public DataTable VaiTroNhanVien(string email)
+        {
+
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_VaiTroNhanVien";
+                cmd.Parameters.AddWithValue("email", email);
+                DataTable dtNhanVien = new DataTable();
+                dtNhanVien.Load(cmd.ExecuteReader());
+                return dtNhanVien;
+                   
+            }
+            
+            finally
+            {
+                _conn.Close();
+            }
+           
+        }
+        public  bool NhanVienQuenMatKhau(string email)
         {
             try
             {
@@ -52,17 +72,14 @@ namespace DAL_QLBanHang
                 if (Convert.ToInt16(cmd.ExecuteScalar()) > 0)
                     return true;
             }
-            catch (Exception ex)
-            {
-
-            }
+            
             finally
             {
                 _conn.Close();
             }
             return false;
         }
-        public static bool TaoMatKhau(string email, string matKhauMoi)
+        public bool TaoMatKhau(string email, string matKhauMoi)
         {
             try
             {
@@ -77,10 +94,7 @@ namespace DAL_QLBanHang
                     return true;
                 
             }
-            catch (Exception ex)
-            {
-
-            }
+            
             finally
             {
                 _conn.Close();

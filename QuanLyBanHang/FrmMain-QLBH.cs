@@ -13,6 +13,9 @@ namespace QuanLyBanHang
 {
     public partial class FrmMain : Form
     {
+        public static int session = 0;// kt tinh trang login
+        public static int profile = 0;
+        public static string mail; // luu mail
         public FrmMain()
         {
             InitializeComponent();
@@ -22,10 +25,6 @@ namespace QuanLyBanHang
         FrmHang_QLBH Hang;
         FrmKhach_QLBH Khach;
         FrmNhanVien_QLBH NV;
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
 
         private void LoginToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -35,12 +34,21 @@ namespace QuanLyBanHang
                 //IsMdiContainer = true;
                 DN.MdiParent = this.MdiParent;
                 DN.Show();
+                DN.FormClosed += new FormClosedEventHandler(FrmDangNhap_QLBH_FormClosed);
             }
             else
             {
                 ActiveChildForm("FrmDangNhap_QLBH");
             }
         }
+
+        private void FrmDangNhap_QLBH_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Refresh();
+
+            FrmMain_Load(sender, e);
+        }
+
         //check da ton tai hay chua
         private bool CheckExistForm(string name)
         {
@@ -80,6 +88,90 @@ namespace QuanLyBanHang
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public void FrmMain_Load(object sender, EventArgs e)
+        {
+            ResetValue();
+            if(profile == 1)
+            {
+                thongTinNVtoolStripMenuItem1 = null;
+                profile = 0; //an muc thong tin nv
+            }
+        }
+        void ResetValue()
+        {
+            DN = new FrmDangNhap_QLBH();
+            if (session == 1)
+            {
+                thongTinNVtoolStripMenuItem1.Text = "Chào " + mail;
+                HoSoNVToolStripMenuItem.Visible = true;
+                DanhMucToolStripMenuItem.Visible = true;
+                SanPhamToolStripMenuItem.Visible = true;
+                khachHangToolStripMenuItem.Visible = true;
+                nhanVienToolStripMenuItem.Visible = true;
+                LogoutToolStripMenuItem.Visible = true;
+                ThongKeToolStripMenuItem.Visible = true;
+                ThongKeSPToolStripMenuItem.Visible = true;
+                if(Convert.ToInt32(DN.vaiTro) == 0)
+                {
+                    nhanVienToolStripMenuItem.Visible = false;
+                    ThongKeToolStripMenuItem.Visible = false;
+                    MessageBox.Show("" + session);
+                }
+            }
+            else
+            {
+                DanhMucToolStripMenuItem.Visible = false;
+                LogoutToolStripMenuItem.Visible = false;
+                HoSoNVToolStripMenuItem.Visible = false;
+                ThongKeSPToolStripMenuItem.Visible = false;
+            }
+        }
+
+        private void menuStripChucNang_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void LogoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HoSoNVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void SanPhamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nhanVienToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void khachHangToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ThongKeSPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GioiThieuPMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
