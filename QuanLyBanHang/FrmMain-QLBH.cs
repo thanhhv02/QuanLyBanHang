@@ -48,6 +48,10 @@ namespace QuanLyBanHang
 
             FrmMain_Load(sender, e);
         }
+        private void checkBoxSaveAcc_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
 
         //check da ton tai hay chua
         private bool CheckExistForm(string name)
@@ -92,16 +96,54 @@ namespace QuanLyBanHang
 
         public void FrmMain_Load(object sender, EventArgs e)
         {
-            ResetValue();
+            Resetvalue();
             if(profile == 1)
             {
                 thongTinNVtoolStripMenuItem1 = null;
                 profile = 0; //an muc thong tin nv
             }
         }
-        void ResetValue()
+        //void ResetValue()
+        //{
+        //    DN = new FrmDangNhap_QLBH();
+        //    if (session == 1)
+        //    {
+        //        if (Convert.ToInt32(DN.vaiTro) != 0)
+        //        {
+        //            thongTinNVtoolStripMenuItem1.Text = "Chào " + mail;
+        //            HoSoNVToolStripMenuItem.Visible = true;
+        //            DanhMucToolStripMenuItem.Visible = true;
+        //            SanPhamToolStripMenuItem.Visible = true;
+        //            khachHangToolStripMenuItem.Visible = true;
+        //            nhanVienToolStripMenuItem.Visible = true;
+        //            LogoutToolStripMenuItem.Visible = true;
+        //            ThongKeToolStripMenuItem.Visible = true;
+        //            ThongKeSPToolStripMenuItem.Visible = true;
+        //        }
+
+        //        else
+        //        {
+        //            nhanVienToolStripMenuItem.Visible = false;
+        //            ThongKeToolStripMenuItem.Visible = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        DanhMucToolStripMenuItem.Visible = false;
+        //        LogoutToolStripMenuItem.Visible = false;
+        //        HoSoNVToolStripMenuItem.Visible = false;
+        //        ThongKeSPToolStripMenuItem.Visible = false;
+        //    }
+        //}
+        private void VaiTroNV()
         {
-            DN = new FrmDangNhap_QLBH();
+            nhanVienToolStripMenuItem.Visible = false;
+            ThongKeToolStripMenuItem.Visible = false;
+        }
+
+        //Thiết lập phân quyền khi load FrmMain
+        private void Resetvalue()
+        {
             if (session == 1)
             {
                 thongTinNVtoolStripMenuItem1.Text = "Chào " + mail;
@@ -113,22 +155,22 @@ namespace QuanLyBanHang
                 LogoutToolStripMenuItem.Visible = true;
                 ThongKeToolStripMenuItem.Visible = true;
                 ThongKeSPToolStripMenuItem.Visible = true;
-                if(Convert.ToInt32(DN.vaiTro) == 0)
+                if (int.Parse(DN.vaiTro) == 0)// nếu là vai trò nhân viên
                 {
-                    nhanVienToolStripMenuItem.Visible = false;
-                    ThongKeToolStripMenuItem.Visible = false;
-                    MessageBox.Show("" + session);
+                    VaiTroNV(); // chức năng nhân viên cơ bản
                 }
             }
             else
             {
+                nhanVienToolStripMenuItem.Visible = false;
+
                 DanhMucToolStripMenuItem.Visible = false;
                 LogoutToolStripMenuItem.Visible = false;
                 HoSoNVToolStripMenuItem.Visible = false;
                 ThongKeSPToolStripMenuItem.Visible = false;
+
             }
         }
-
         private void menuStripChucNang_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -136,7 +178,9 @@ namespace QuanLyBanHang
 
         private void LogoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            session = 0;
+            Resetvalue();
+            thongTinNVtoolStripMenuItem1.Text = null;
         }
 
         private void HoSoNVToolStripMenuItem_Click(object sender, EventArgs e)

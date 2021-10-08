@@ -50,14 +50,14 @@ namespace DAL_QLBanHang
                 DataTable dtNhanVien = new DataTable();
                 dtNhanVien.Load(cmd.ExecuteReader());
                 return dtNhanVien;
-                   
+
             }
-            
+
             finally
             {
                 _conn.Close();
             }
-           
+
         }
         public  bool NhanVienQuenMatKhau(string email)
         {
