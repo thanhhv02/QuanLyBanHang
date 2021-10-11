@@ -44,7 +44,7 @@ namespace DAL_QLBanHang
                 cmd.Parameters.AddWithValue("ten", kh.TenKhach);
                 cmd.Parameters.AddWithValue("diachi", kh.DiaChi);
                 cmd.Parameters.AddWithValue("gioitinh", kh.Phai);
-                cmd.Parameters.AddWithValue("nvemail", kh.Emailnv);
+                cmd.Parameters.AddWithValue("email", kh.Emailnv);
                 cmd.Parameters.AddWithValue("StatementType", kh.StatementType);
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
