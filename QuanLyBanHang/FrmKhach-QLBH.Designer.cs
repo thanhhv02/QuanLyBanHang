@@ -38,7 +38,7 @@ namespace QuanLyBanHang
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
-            this.dataGridViewKhach = new System.Windows.Forms.DataGridView();
+            this.dgvKhachHang = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,24 +49,24 @@ namespace QuanLyBanHang
             this.textBoxDiaChi = new System.Windows.Forms.TextBox();
             this.radioButtonNam = new System.Windows.Forms.RadioButton();
             this.radioButtonNu = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(655, 437);
+            this.buttonClose.Location = new System.Drawing.Point(664, 437);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(89, 36);
-            this.buttonClose.TabIndex = 9;
+            this.buttonClose.Size = new System.Drawing.Size(94, 36);
+            this.buttonClose.TabIndex = 13;
             this.buttonClose.Text = "Đóng";
             this.buttonClose.UseVisualStyleBackColor = true;
             // 
             // buttonDanhSach
             // 
-            this.buttonDanhSach.Location = new System.Drawing.Point(552, 437);
+            this.buttonDanhSach.Location = new System.Drawing.Point(561, 437);
             this.buttonDanhSach.Name = "buttonDanhSach";
-            this.buttonDanhSach.Size = new System.Drawing.Size(90, 36);
-            this.buttonDanhSach.TabIndex = 10;
+            this.buttonDanhSach.Size = new System.Drawing.Size(97, 36);
+            this.buttonDanhSach.TabIndex = 12;
             this.buttonDanhSach.Text = "Danh Sách";
             this.buttonDanhSach.UseVisualStyleBackColor = true;
             // 
@@ -74,53 +74,56 @@ namespace QuanLyBanHang
             // 
             this.buttonBoQua.Location = new System.Drawing.Point(454, 437);
             this.buttonBoQua.Name = "buttonBoQua";
-            this.buttonBoQua.Size = new System.Drawing.Size(85, 36);
+            this.buttonBoQua.Size = new System.Drawing.Size(94, 36);
             this.buttonBoQua.TabIndex = 11;
             this.buttonBoQua.Text = "Bỏ qua";
             this.buttonBoQua.UseVisualStyleBackColor = true;
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(346, 437);
+            this.buttonSave.Location = new System.Drawing.Point(341, 437);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(91, 36);
-            this.buttonSave.TabIndex = 12;
+            this.buttonSave.Size = new System.Drawing.Size(97, 36);
+            this.buttonSave.TabIndex = 10;
             this.buttonSave.Text = "Lưu";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(252, 437);
+            this.buttonEdit.Location = new System.Drawing.Point(242, 437);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(88, 36);
-            this.buttonEdit.TabIndex = 13;
+            this.buttonEdit.TabIndex = 9;
             this.buttonEdit.Text = "Sửa";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(163, 437);
+            this.buttonDelete.Location = new System.Drawing.Point(136, 437);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(83, 36);
-            this.buttonDelete.TabIndex = 14;
+            this.buttonDelete.Size = new System.Drawing.Size(96, 36);
+            this.buttonDelete.TabIndex = 8;
             this.buttonDelete.Text = "Xoá";
             this.buttonDelete.UseVisualStyleBackColor = true;
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(76, 437);
+            this.buttonAdd.Location = new System.Drawing.Point(30, 437);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(81, 36);
-            this.buttonAdd.TabIndex = 15;
+            this.buttonAdd.Size = new System.Drawing.Size(95, 36);
+            this.buttonAdd.TabIndex = 7;
             this.buttonAdd.Text = "Thêm";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonSearch
             // 
             this.buttonSearch.Location = new System.Drawing.Point(463, 394);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(74, 36);
-            this.buttonSearch.TabIndex = 16;
+            this.buttonSearch.Size = new System.Drawing.Size(97, 36);
+            this.buttonSearch.TabIndex = 6;
             this.buttonSearch.Text = "Tìm kiếm";
             this.buttonSearch.UseVisualStyleBackColor = true;
             // 
@@ -129,17 +132,18 @@ namespace QuanLyBanHang
             this.textBoxSearch.Location = new System.Drawing.Point(242, 401);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(208, 22);
-            this.textBoxSearch.TabIndex = 8;
+            this.textBoxSearch.TabIndex = 5;
             // 
-            // dataGridViewKhach
+            // dgvKhachHang
             // 
-            this.dataGridViewKhach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewKhach.Location = new System.Drawing.Point(13, 174);
-            this.dataGridViewKhach.Name = "dataGridViewKhach";
-            this.dataGridViewKhach.RowHeadersWidth = 51;
-            this.dataGridViewKhach.RowTemplate.Height = 24;
-            this.dataGridViewKhach.Size = new System.Drawing.Size(775, 214);
-            this.dataGridViewKhach.TabIndex = 17;
+            this.dgvKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKhachHang.Location = new System.Drawing.Point(13, 174);
+            this.dgvKhachHang.Name = "dgvKhachHang";
+            this.dgvKhachHang.RowHeadersWidth = 51;
+            this.dgvKhachHang.RowTemplate.Height = 24;
+            this.dgvKhachHang.Size = new System.Drawing.Size(775, 214);
+            this.dgvKhachHang.TabIndex = 17;
+            this.dgvKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachHang_CellClick);
             // 
             // label1
             // 
@@ -193,21 +197,21 @@ namespace QuanLyBanHang
             this.textBoxSDT.Location = new System.Drawing.Point(163, 64);
             this.textBoxSDT.Name = "textBoxSDT";
             this.textBoxSDT.Size = new System.Drawing.Size(145, 22);
-            this.textBoxSDT.TabIndex = 20;
+            this.textBoxSDT.TabIndex = 0;
             // 
             // textBoxTenKhach
             // 
             this.textBoxTenKhach.Location = new System.Drawing.Point(163, 111);
             this.textBoxTenKhach.Name = "textBoxTenKhach";
             this.textBoxTenKhach.Size = new System.Drawing.Size(145, 22);
-            this.textBoxTenKhach.TabIndex = 20;
+            this.textBoxTenKhach.TabIndex = 1;
             // 
             // textBoxDiaChi
             // 
             this.textBoxDiaChi.Location = new System.Drawing.Point(524, 65);
             this.textBoxDiaChi.Name = "textBoxDiaChi";
             this.textBoxDiaChi.Size = new System.Drawing.Size(145, 22);
-            this.textBoxDiaChi.TabIndex = 20;
+            this.textBoxDiaChi.TabIndex = 2;
             // 
             // radioButtonNam
             // 
@@ -215,7 +219,7 @@ namespace QuanLyBanHang
             this.radioButtonNam.Location = new System.Drawing.Point(524, 111);
             this.radioButtonNam.Name = "radioButtonNam";
             this.radioButtonNam.Size = new System.Drawing.Size(58, 21);
-            this.radioButtonNam.TabIndex = 21;
+            this.radioButtonNam.TabIndex = 3;
             this.radioButtonNam.TabStop = true;
             this.radioButtonNam.Text = "Nam";
             this.radioButtonNam.UseVisualStyleBackColor = true;
@@ -226,7 +230,7 @@ namespace QuanLyBanHang
             this.radioButtonNu.Location = new System.Drawing.Point(634, 111);
             this.radioButtonNu.Name = "radioButtonNu";
             this.radioButtonNu.Size = new System.Drawing.Size(47, 21);
-            this.radioButtonNu.TabIndex = 21;
+            this.radioButtonNu.TabIndex = 4;
             this.radioButtonNu.TabStop = true;
             this.radioButtonNu.Text = "Nữ";
             this.radioButtonNu.UseVisualStyleBackColor = true;
@@ -246,7 +250,7 @@ namespace QuanLyBanHang
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridViewKhach);
+            this.Controls.Add(this.dgvKhachHang);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonDanhSach);
             this.Controls.Add(this.buttonBoQua);
@@ -258,7 +262,9 @@ namespace QuanLyBanHang
             this.Controls.Add(this.textBoxSearch);
             this.Name = "FrmKhach_QLBH";
             this.Text = "FrmKhach_QLBH";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhach)).EndInit();
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmKhach_QLBH_FormClosed);
+            this.Load += new System.EventHandler(this.FrmKhach_QLBH_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,7 +281,7 @@ namespace QuanLyBanHang
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.TextBox textBoxSearch;
-        private System.Windows.Forms.DataGridView dataGridViewKhach;
+        private System.Windows.Forms.DataGridView dgvKhachHang;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

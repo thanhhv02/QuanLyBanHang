@@ -39,6 +39,10 @@ namespace DTO_QlBanHang
             this.StatementType = statementtype;
         }
 
+        public DTO_NhanVien(string statementtype)
+        {
+            this.StatementType = statementtype;
+        }
         public DTO_NhanVien()
         {
         }
@@ -49,5 +53,6 @@ namespace DTO_QlBanHang
         public string EmailNV { get => emailNV; set => emailNV = value; }
         public string MatKhau { get => matKhau; set => matKhau = value; }
         public int TinhTrang { get => tinhTrang; set => tinhTrang = value; }
+        public string StatementType1 { get => StatementType; set => StatementType = value; }
     }
 }

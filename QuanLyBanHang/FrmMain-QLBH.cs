@@ -42,11 +42,21 @@ namespace QuanLyBanHang
             }
         }
 
-        private void FrmDangNhap_QLBH_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmDangNhap_QLBH_FormClosed(object sender, FormClosedEventArgs e)//close form dang nhap
         {
             this.Refresh();
 
             FrmMain_Load(sender, e);
+        }
+        private void FrmNhanVien_QLBH_FormClosed(object sender, FormClosedEventArgs e)//close form nhan vien
+        {
+            this.Refresh();
+
+            FrmMain_Load(sender, e);
+        }
+        private void FrmKhach_QLBH_FormClosed(object sender, FormClosedEventArgs e)//close form khach
+        {
+
         }
         private void checkBoxSaveAcc_CheckedChanged(object sender, EventArgs e)
         {
@@ -96,7 +106,7 @@ namespace QuanLyBanHang
 
         public void FrmMain_Load(object sender, EventArgs e)
         {
-            Resetvalue();
+            ResetValue();
             if(profile == 1)
             {
                 thongTinNVtoolStripMenuItem1 = null;
@@ -142,7 +152,7 @@ namespace QuanLyBanHang
         }
 
         //Thiết lập phân quyền khi load FrmMain
-        private void Resetvalue()
+        private void ResetValue()
         {
             if (session == 1)
             {
@@ -179,7 +189,7 @@ namespace QuanLyBanHang
         private void LogoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             session = 0;
-            Resetvalue();
+            ResetValue();
             thongTinNVtoolStripMenuItem1.Text = null;
         }
 
@@ -200,12 +210,34 @@ namespace QuanLyBanHang
 
         private void nhanVienToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            NV = new FrmNhanVien_QLBH();
+            if (!CheckExistForm("FrmNhanVien-QLBH"))
+            {
+                //IsMdiContainer = true;
+                NV.MdiParent = this.MdiParent;
+                NV.Show();
+                NV.FormClosed += new FormClosedEventHandler(FrmNhanVien_QLBH_FormClosed);
+            }
+            else
+            {
+                ActiveChildForm("FrmNhanVien-QLBH");
+            }
         }
 
         private void khachHangToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Khach = new FrmKhach_QLBH();
+            if (!CheckExistForm("FrmKhach-QLBH"))
+            {
+                //IsMdiContainer = true;
+                Khach.MdiParent = this.MdiParent;
+                Khach.Show();
+                Khach.FormClosed += new FormClosedEventHandler(FrmKhach_QLBH_FormClosed);
+            }
+            else
+            {
+                ActiveChildForm("FrmKhach-QLBH");
+            }
         }
 
         private void ThongKeSPToolStripMenuItem_Click(object sender, EventArgs e)

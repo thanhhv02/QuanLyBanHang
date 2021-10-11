@@ -13,7 +13,118 @@ namespace DAL_QLBanHang
     public class DAL_NhanVien : DBConnect
     {
         
-        
+        public DataTable getNhanVien()
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_GetNhanVien";
+                DataTable dtHang = new DataTable();
+                dtHang.Load(cmd.ExecuteReader());
+                return dtHang;
+            }
+
+            finally
+            {
+                _conn.Close();
+            }
+        }
+        public bool InsertNhanVien(DTO_NhanVien nv)
+        {
+
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_NhanVienInsertUpdate";
+                cmd.Parameters.AddWithValue("email", nv.EmailNV);
+                cmd.Parameters.AddWithValue("tennv", nv.TenNhanVien);
+                cmd.Parameters.AddWithValue("diachi", nv.DiaChi);
+                cmd.Parameters.AddWithValue("vaitro", nv.VaiTro);
+                cmd.Parameters.AddWithValue("tinhtrang", nv.TinhTrang);
+                cmd.Parameters.AddWithValue("StatementType", nv.StatementType1);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+
+            finally
+            {
+                _conn.Close();
+            }
+            return false;
+        }
+        public bool UpdateNhanVien(DTO_NhanVien nv)//update nhan vien
+        {
+
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_NhanVienInsertUpdate";
+                cmd.Parameters.AddWithValue("email", nv.EmailNV);
+                cmd.Parameters.AddWithValue("tennv", nv.TenNhanVien);
+                cmd.Parameters.AddWithValue("diachi", nv.DiaChi);
+                cmd.Parameters.AddWithValue("vaitro", nv.VaiTro);
+                cmd.Parameters.AddWithValue("tinhtrang", nv.TinhTrang);
+                cmd.Parameters.AddWithValue("StatementType", nv.StatementType1);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+
+            finally
+            {
+                _conn.Close();
+            }
+            return false;
+        }
+        public bool DeleteNhanVien(string email)//delete nhan vien
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_XoaNhanVien";
+                cmd.Parameters.AddWithValue("email", email);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+
+            finally
+            {
+                _conn.Close();
+            }
+            return false;
+        }
+        public DataTable SearchNhanVien(string tenNV)//search nhan vien
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_SearchNhanVien";
+                cmd.Parameters.AddWithValue("tennv", tenNV);
+                DataTable dtSearchNV = new DataTable();
+                dtSearchNV.Load(cmd.ExecuteReader());
+                return dtSearchNV;
+            }
+
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
         public bool NhanVienDangNhap(DTO_NhanVien nv)
         {
             

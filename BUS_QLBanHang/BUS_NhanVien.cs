@@ -13,26 +13,44 @@ namespace BUS_QLBanHang
     public class BUS_NhanVien
     {
         DAL_NhanVien dalnhanvien = new DAL_NhanVien();
-        
-
-        public bool NhanVienDangNhap(DTO_NhanVien nv)
+        public bool InsertNhanVien(DTO_NhanVien nv)
+        {
+            return dalnhanvien.InsertNhanVien(nv);
+        }
+        public bool UpdateNhanVien(DTO_NhanVien nv)
+        {
+            return dalnhanvien.UpdateNhanVien(nv);
+        }
+        public bool DeleteNhanVien(string email)
+        {
+            return dalnhanvien.DeleteNhanVien(email);
+        }
+        public DataTable SearchNhanVien(string tenNV)
+        {
+            return dalnhanvien.SearchNhanVien(tenNV);
+        }
+        public DataTable getNhanVien()//danh sach nhan vien
+        {
+            return dalnhanvien.getNhanVien();
+        }
+        public bool NhanVienDangNhap(DTO_NhanVien nv)//nhan vien dang nhap
         {
             return dalnhanvien.NhanVienDangNhap(nv);
         }
-        public bool NhanVienQuenMatKhau(string email)
+        public bool NhanVienQuenMatKhau(string email)//nhan vien quen mat khau
         {
             return dalnhanvien.NhanVienQuenMatKhau(email);
         }
-        public bool TaoMatKhau(string email, string matKhauMoi)
+        public bool TaoMatKhau(string email, string matKhauMoi)// tao mat khau moi
         {
             return dalnhanvien.TaoMatKhau(email,matKhauMoi);
         }
-        public DataTable VaiTroNhanVien(string email)
+        public DataTable VaiTroNhanVien(string email)// voa tro nhan vien
         {
             return dalnhanvien.VaiTroNhanVien(email);
         }
 
-        public string encryption(string password)
+        public string encryption(string password)// ma hoa
         {
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
             byte[] encrypt;

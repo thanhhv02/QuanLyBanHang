@@ -105,7 +105,7 @@ namespace QuanLyBanHang
             return random.Next(min, max);
         }
         //gioi mail
-        public void SenMail(string email, string matkhau)
+        public void SendMail(string email, string matkhau)
         {
             try
             {
@@ -149,7 +149,7 @@ namespace QuanLyBanHang
                     MessageBox.Show(builder.ToString());
                     string matKhauMoi = busNhanVien.encryption(builder.ToString());
                     busNhanVien.TaoMatKhau(textBoxEmail.Text,matKhauMoi);
-                    SenMail(textBoxEmail.Text, builder.ToString());
+                    SendMail(textBoxEmail.Text, builder.ToString());
 
                 }
                 else
