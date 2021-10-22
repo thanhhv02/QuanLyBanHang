@@ -97,6 +97,7 @@ namespace QuanLyBanHang
             this.buttonDoiMatKhau.TabIndex = 23;
             this.buttonDoiMatKhau.Text = "Đổi mật khẩu";
             this.buttonDoiMatKhau.UseVisualStyleBackColor = true;
+            this.buttonDoiMatKhau.Click += new System.EventHandler(this.buttonDoiMatKhau_Click);
             // 
             // buttonClose
             // 

@@ -1,0 +1,6 @@
+D:\My project\C#\DuAnMau\QuanLyBanHang\DTO_QlBanHang\bin\Release\DTO_QlBanHang.dll
+D:\My project\C#\DuAnMau\QuanLyBanHang\DTO_QlBanHang\bin\Release\DTO_QlBanHang.pdb
+D:\My project\C#\DuAnMau\QuanLyBanHang\DTO_QlBanHang\obj\Release\DTO_QLBanHang.csproj.AssemblyReference.cache
+D:\My project\C#\DuAnMau\QuanLyBanHang\DTO_QlBanHang\obj\Release\DTO_QLBanHang.csproj.CoreCompileInputs.cache
+D:\My project\C#\DuAnMau\QuanLyBanHang\DTO_QlBanHang\obj\Release\DTO_QlBanHang.dll
+D:\My project\C#\DuAnMau\QuanLyBanHang\DTO_QlBanHang\obj\Release\DTO_QlBanHang.pdb

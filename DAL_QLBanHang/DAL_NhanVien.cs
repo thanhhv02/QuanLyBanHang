@@ -212,5 +212,28 @@ namespace DAL_QLBanHang
             }
             return false;
         }
+        public bool NhanVienDoiMatKhau(string email, string matKhauCu, string matKhauMoi)
+        {
+
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_updateUserPassword";
+                cmd.Parameters.AddWithValue("email", email);
+                cmd.Parameters.AddWithValue("oldHashedPassword", matKhauCu);
+                cmd.Parameters.AddWithValue("newHashedPassword", matKhauMoi);
+                if (Convert.ToInt64(cmd.ExecuteScalar()) > 0)
+                    return true;
+            }
+
+            finally
+            {
+                _conn.Close();
+            }
+            return false;
+        }
     }
 }

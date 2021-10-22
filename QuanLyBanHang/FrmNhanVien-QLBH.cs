@@ -169,33 +169,41 @@ namespace QuanLyBanHang
 
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvNhanVien.Rows.Count > 1)
+            try
             {
-                buttonSave.Enabled = false;
-                textBoxTenNV.Enabled = true;
-                textBoxDiaChi.Enabled = true;
-                radioButtonQuantri.Enabled = true;
-                radioButtonNhanVien.Enabled = true;
-                radioButtonHoatDong.Enabled = true;
-                radioButtonNgungHoatDong.Enabled = true;
-                buttonEdit.Enabled = true;
-                buttonDelete.Enabled = true;
-                textBoxEmail.Text = dgvNhanVien.CurrentRow.Cells["email"].Value.ToString();
-                textBoxTenNV.Text = dgvNhanVien.CurrentRow.Cells["tennv"].Value.ToString();
-                textBoxDiaChi.Text = dgvNhanVien.CurrentRow.Cells["diachi"].Value.ToString();
-                if (int.Parse(dgvNhanVien.CurrentRow.Cells["vaitro"].Value.ToString()) == 1)
-                    radioButtonQuantri.Checked = true;
+                if (dgvNhanVien.Rows.Count > 1)
+                {
+                    buttonSave.Enabled = false;
+                    textBoxTenNV.Enabled = true;
+                    textBoxDiaChi.Enabled = true;
+                    radioButtonQuantri.Enabled = true;
+                    radioButtonNhanVien.Enabled = true;
+                    radioButtonHoatDong.Enabled = true;
+                    radioButtonNgungHoatDong.Enabled = true;
+                    buttonEdit.Enabled = true;
+                    buttonDelete.Enabled = true;
+                    textBoxEmail.Text = dgvNhanVien.CurrentRow.Cells["email"].Value.ToString();
+                    textBoxTenNV.Text = dgvNhanVien.CurrentRow.Cells["tennv"].Value.ToString();
+                    textBoxDiaChi.Text = dgvNhanVien.CurrentRow.Cells["diachi"].Value.ToString();
+                    if (int.Parse(dgvNhanVien.CurrentRow.Cells["vaitro"].Value.ToString()) == 1)
+                        radioButtonQuantri.Checked = true;
+                    else
+                        radioButtonNhanVien.Checked = true;
+                    if (int.Parse(dgvNhanVien.CurrentRow.Cells["tinhtrang"].Value.ToString()) == 1)
+                        radioButtonHoatDong.Checked = true;
+                    else
+                        radioButtonNgungHoatDong.Checked = true;
+                }
                 else
-                    radioButtonNhanVien.Checked = true;
-                if (int.Parse(dgvNhanVien.CurrentRow.Cells["tinhtrang"].Value.ToString()) == 1)
-                    radioButtonHoatDong.Checked = true;
-                else
-                    radioButtonNgungHoatDong.Checked = true;
+                {
+                    MessageBox.Show("Bảng không tồn tại dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Bảng không tồn tại dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
+            
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -249,23 +257,31 @@ namespace QuanLyBanHang
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             string email = textBoxEmail.Text;
-            if(MessageBox.Show("Bạn có chắc muốn xoá dữ liệu","Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if(email != FrmMain.mail)
             {
-                if (bUS_NhanVien.DeleteNhanVien(email))
+                if (MessageBox.Show("Bạn có chắc muốn xoá dữ liệu", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MessageBox.Show("Xoá dữ liệu thành công");
-                    ResetValue();
-                    LoadDataGridView_NhanVien();
+                    if (bUS_NhanVien.DeleteNhanVien(email))
+                    {
+                        MessageBox.Show("Xoá dữ liệu thành công");
+                        ResetValue();
+                        LoadDataGridView_NhanVien();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xoá không thành công");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Xoá không thành công");
+                    ResetValue();
                 }
             }
             else
             {
-                ResetValue();
+                MessageBox.Show("Nhân viên này đang đăng nhập không thể xoá !");
             }
+            
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
@@ -314,6 +330,11 @@ namespace QuanLyBanHang
         }
 
         private void FrmNhanVien_QLBH_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
+        private void dgvNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

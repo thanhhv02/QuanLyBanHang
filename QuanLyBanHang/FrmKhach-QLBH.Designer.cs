@@ -60,6 +60,7 @@ namespace QuanLyBanHang
             this.buttonClose.TabIndex = 13;
             this.buttonClose.Text = "Đóng";
             this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // buttonDanhSach
             // 
@@ -69,6 +70,7 @@ namespace QuanLyBanHang
             this.buttonDanhSach.TabIndex = 12;
             this.buttonDanhSach.Text = "Danh Sách";
             this.buttonDanhSach.UseVisualStyleBackColor = true;
+            this.buttonDanhSach.Click += new System.EventHandler(this.buttonDanhSach_Click);
             // 
             // buttonBoQua
             // 
@@ -78,6 +80,7 @@ namespace QuanLyBanHang
             this.buttonBoQua.TabIndex = 11;
             this.buttonBoQua.Text = "Bỏ qua";
             this.buttonBoQua.UseVisualStyleBackColor = true;
+            this.buttonBoQua.Click += new System.EventHandler(this.buttonBoQua_Click);
             // 
             // buttonSave
             // 
@@ -107,6 +110,7 @@ namespace QuanLyBanHang
             this.buttonDelete.TabIndex = 8;
             this.buttonDelete.Text = "Xoá";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonAdd
             // 
@@ -126,6 +130,7 @@ namespace QuanLyBanHang
             this.buttonSearch.TabIndex = 6;
             this.buttonSearch.Text = "Tìm kiếm";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // textBoxSearch
             // 
@@ -133,6 +138,8 @@ namespace QuanLyBanHang
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(208, 22);
             this.textBoxSearch.TabIndex = 5;
+            this.textBoxSearch.Click += new System.EventHandler(this.textBoxSearch_Click);
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
             // dgvKhachHang
             // 

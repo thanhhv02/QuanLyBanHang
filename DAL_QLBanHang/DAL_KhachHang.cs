@@ -70,6 +70,7 @@ namespace DAL_QLBanHang
                 cmd.Parameters.AddWithValue("ten", kh.TenKhach);
                 cmd.Parameters.AddWithValue("diachi", kh.DiaChi);
                 cmd.Parameters.AddWithValue("gioitinh", kh.Phai);
+                cmd.Parameters.AddWithValue("email", kh.Emailnv);
                 cmd.Parameters.AddWithValue("StatementType", kh.StatementType);
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
@@ -81,7 +82,7 @@ namespace DAL_QLBanHang
             }
             return false;
         }
-        public bool DeleteNhanVien(string email)//delete nhan vien
+        public bool DeleteNhanVien(string SDT)//delete nhan vien
         {
             try
             {
@@ -89,8 +90,8 @@ namespace DAL_QLBanHang
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = _conn;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_XoaNhanVien";
-                cmd.Parameters.AddWithValue("email", email);
+                cmd.CommandText = "sp_XoaKhachHang";
+                cmd.Parameters.AddWithValue("DT", SDT);
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
             }
@@ -101,7 +102,7 @@ namespace DAL_QLBanHang
             }
             return false;
         }
-        public DataTable SearchNhanVien(string tenNV)//search nhan vien
+        public DataTable SearchKhachHang(string SDT)//search nhan vien
         {
             try
             {
@@ -109,8 +110,8 @@ namespace DAL_QLBanHang
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = _conn;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_SearchNhanVien";
-                cmd.Parameters.AddWithValue("tennv", tenNV);
+                cmd.CommandText = "sp_SearchKhachHang";
+                cmd.Parameters.AddWithValue("DT", SDT);
                 DataTable dtSearchNV = new DataTable();
                 dtSearchNV.Load(cmd.ExecuteReader());
                 return dtSearchNV;

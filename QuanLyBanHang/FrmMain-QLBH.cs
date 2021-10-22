@@ -58,6 +58,10 @@ namespace QuanLyBanHang
         {
 
         }
+        private void FrmHang_QLBH_FormClosed(object sender, FormClosedEventArgs e)//close form hang
+        {
+
+        }
         private void checkBoxSaveAcc_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -165,6 +169,7 @@ namespace QuanLyBanHang
                 LogoutToolStripMenuItem.Visible = true;
                 ThongKeToolStripMenuItem.Visible = true;
                 ThongKeSPToolStripMenuItem.Visible = true;
+                LoginToolStripMenuItem.Visible = false;
                 if (int.Parse(DN.vaiTro) == 0)// nếu là vai trò nhân viên
                 {
                     VaiTroNV(); // chức năng nhân viên cơ bản
@@ -173,12 +178,12 @@ namespace QuanLyBanHang
             else
             {
                 nhanVienToolStripMenuItem.Visible = false;
-
                 DanhMucToolStripMenuItem.Visible = false;
                 LogoutToolStripMenuItem.Visible = false;
                 HoSoNVToolStripMenuItem.Visible = false;
                 ThongKeSPToolStripMenuItem.Visible = false;
-
+                ThongKeToolStripMenuItem.Visible = false;
+                LoginToolStripMenuItem.Visible = true;
             }
         }
         private void menuStripChucNang_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -205,7 +210,18 @@ namespace QuanLyBanHang
 
         private void SanPhamToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Hang = new FrmHang_QLBH();
+            if (!CheckExistForm("FrmHang-QLBH"))
+            {
+                //IsMdiContainer = true;
+                Hang.MdiParent = this.MdiParent;
+                Hang.Show();
+                Hang.FormClosed += new FormClosedEventHandler(FrmHang_QLBH_FormClosed);
+            }
+            else
+            {
+                ActiveChildForm("FrmHang-QLBH");
+            }
         }
 
         private void nhanVienToolStripMenuItem_Click(object sender, EventArgs e)

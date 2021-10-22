@@ -1,3 +1,5 @@
+D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\bin\Debug\QuanLyBanHang.mdf
+D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\bin\Debug\QuanLyBanHang_log.ldf
 D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\bin\Debug\QuanLyBanHang.exe.config
 D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\bin\Debug\QuanLyBanHang.exe
 D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\bin\Debug\QuanLyBanHang.pdb
@@ -14,6 +16,7 @@ D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.Frm
 D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.FrmMain.resources
 D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.FrmNhanVien_QLBH.resources
 D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.FrmHang_QLBH.resources
+D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.FrmThongKe.resources
 D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.Properties.Resources.resources
 D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\obj\Debug\GUI_QLBanHang.csproj.GenerateResource.cache
 D:\My project\C#\DuAnMau\QuanLyBanHang\QuanLyBanHang\obj\Debug\GUI_QLBanHang.csproj.CoreCompileInputs.cache

@@ -183,6 +183,7 @@ namespace QuanLyBanHang
             this.dgvNhanVien.Size = new System.Drawing.Size(763, 216);
             this.dgvNhanVien.TabIndex = 5;
             this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
+            this.dgvNhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellContentClick);
             // 
             // textBoxSearch
             // 

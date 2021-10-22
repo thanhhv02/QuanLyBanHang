@@ -49,7 +49,10 @@ namespace BUS_QLBanHang
         {
             return dalnhanvien.VaiTroNhanVien(email);
         }
-
+        public bool NhanVienDoiMatKhau(string email,string matKhauCu, string matKhauMoi)// tao mat khau moi
+        {
+            return dalnhanvien.NhanVienDoiMatKhau(email, matKhauCu, matKhauMoi);
+        }
         public string encryption(string password)// ma hoa
         {
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
